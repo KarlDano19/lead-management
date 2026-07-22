@@ -1,0 +1,19 @@
+{
+  "name": "telegram-mcp-server",
+  "version": "1.0.0",
+  "description": "Minimal remote MCP server that lets Claude (Cowork) send Telegram notifications to named team members.",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "express": "^5.2.1",
+    "zod": "^4.4.3"
+  }
+}
