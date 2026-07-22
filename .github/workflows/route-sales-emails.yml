@@ -1,0 +1,19 @@
+name: Route Sales Emails
+
+on:
+  schedule:
+    # Every 20 minutes. GitHub Actions cron can run a few minutes late
+    # during high load, but there's no daily-cap restriction like Vercel's
+    # free tier has.
+    - cron: "*/20 * * * *"
+  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call routing endpoint
+        run: |
+          curl -sS -X POST "${{ secrets.ROUTE_EMAILS_URL }}" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --fail-with-body
